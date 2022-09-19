@@ -1,15 +1,16 @@
+# location: spec/unit/unit_spec.rb
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
   subject do
-    described_class.new(title: 'Harry Potter', author: 'JK Rowling', price: 19.99, published_date: '2020-09-28')
+    described_class.new(title: 'harry potter', author: 'JK', price: 1, published_date: Date.parse('2022-01-01', '%Y-%m-%d') )
   end
 
-  it 'is valid with all valid attributes' do
+  it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end
 
-  it 'is not valid without a title' do
+  it 'is not valid without a name' do
     subject.title = nil
     expect(subject).not_to be_valid
   end
@@ -24,8 +25,9 @@ RSpec.describe Book, type: :model do
     expect(subject).not_to be_valid
   end
 
-  it 'is not valid without a published_date' do
+  it 'is not valid without a published date' do
     subject.published_date = nil
     expect(subject).not_to be_valid
   end
+
 end
